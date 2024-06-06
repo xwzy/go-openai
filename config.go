@@ -55,6 +55,20 @@ func DefaultConfig(authToken string) ClientConfig {
 	}
 }
 
+func DefaultConfigWithURL(authToken, baseURL string) ClientConfig {
+	return ClientConfig{
+		authToken:        authToken,
+		BaseURL:          baseURL,
+		APIType:          APITypeOpenAI,
+		AssistantVersion: defaultAssistantVersion,
+		OrgID:            "",
+
+		HTTPClient: &http.Client{},
+
+		EmptyMessagesLimit: defaultEmptyMessagesLimit,
+	}
+}
+
 func DefaultAzureConfig(apiKey, baseURL string) ClientConfig {
 	return ClientConfig{
 		authToken:  apiKey,
